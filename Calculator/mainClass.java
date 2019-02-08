@@ -10,10 +10,6 @@ import java.awt.event.ActionListener;
 
 public class mainClass {
 	
-	public static enum Ops {
-		ONE, TWO, THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,PLUS,MINUS,MULTIPLY,DIVIDE, EQUELS, CLEAR
-	}
-	
 	static calculations calc = new calculations();
 	
 	public static void main(String[] args) {
@@ -72,8 +68,14 @@ public class mainClass {
 					}
 					
 				} else if (entry == "="){
+					
+					
+					
+					System.out.println("RESULT: "+ calc.calcultaion());
 					textField.setText(Double.toString(calc.calcultaion()));
 					calc.setSwap(2);
+					
+					
 				} else {
 					textField.setText(text + entry);
 					

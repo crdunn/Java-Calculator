@@ -74,16 +74,4 @@ public class calculations {
 		
 	}
 	
-//	public static void main(int[] args) {
-//		
-//		if(args[0] == 0) {
-//			System.out.println(adder(args[1],args[2]));
-//		} else if(args[0] == 1) {
-//			System.out.println(subtractor(args[1],args[2]));
-//		} else if(args[0] == 2) {
-//			System.out.println(multiplier(args[1],args[2]));
-//		} else if(args[0] == 3) {
-//			System.out.println(divider(args[1],args[2]));
-//		}
-//	}
 }

@@ -1,8 +1,10 @@
 package Calculator;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,11 +18,15 @@ public class mainClass {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+
 		JFrame cf = new JFrame();
 		
 		cf.setTitle("Calculator");
 		cf.setSize(200,360);
 		cf.setVisible(true);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(4,4));
 		
 		cf.setLayout(new FlowLayout());
 		
@@ -35,47 +41,54 @@ public class mainClass {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(calc.isSwap() == 2) {
+					textField.setText("");
+					calc.setSwap(0);
+				}
+				
 				
 				String entry = e.getActionCommand();
 				String text = textField.getText();
 				
 				if (entry == "+" || entry == "-" || entry == "*" || entry == "/" )  {
 					calc.setOperator(entry);
-					calc.setSwap(false);
+					calc.setSwap(1);
 					textField.setText(text = "");
-					System.out.println("This is from getOperator: " + calc.getOperator());
-					System.out.println("This is from getOperator: " + calc.isSwap());
 					
 				} else if (entry == "C"){
 					textField.setText(text = "");
-					calc.setSwap(true);
+					calc.setSwap(0);
 					calc.setFirst(0);
 					calc.setSecond(0);
 					
 					
 				} else if (entry == "CE"){
-					if (calc.isSwap()) {
+					if (calc.isSwap() == 0) {
 						textField.setText(text = "");
 						calc.setFirst(0);
-					} else {
+					} else if (calc.isSwap() == 1){
 						textField.setText(Integer.toString(calc.getFirst()));
 						calc.setSecond(0);
 					}
 					
 				} else if (entry == "="){
 					textField.setText(Double.toString(calc.calcultaion()));
+					calc.setSwap(2);
 				} else {
 					textField.setText(text + entry);
 					
-					if (calc.isSwap()) {
+					if (calc.isSwap() == 0) {
 						calc.setFirst(Integer.parseInt(text + entry));
-					} else {
+					} else if (calc.isSwap() == 1){
 						calc.setSecond(Integer.parseInt(text + entry));
 					}
 					
-					System.out.println("This Is from calc: " + calc.getFirst());
-					System.out.println("This Is from calc: " + calc.getSecond());
 				}
+				
+				System.out.println("First: " + calc.getFirst());
+				System.out.println("Second: " + calc.getSecond());
+				System.out.println("operator: " + calc.getOperator());
+				System.out.println("swap: " + calc.isSwap());
 
 			}
 			

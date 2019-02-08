@@ -19,7 +19,7 @@ public class mainClass {
 		JFrame cf = new JFrame();
 		
 		cf.setTitle("Calculator");
-		cf.setSize(200,350);
+		cf.setSize(200,360);
 		cf.setVisible(true);
 		
 		cf.setLayout(new FlowLayout());
@@ -48,9 +48,22 @@ public class mainClass {
 					
 				} else if (entry == "C"){
 					textField.setText(text = "");
+					calc.setSwap(true);
+					calc.setFirst(0);
+					calc.setSecond(0);
+					
+					
+				} else if (entry == "CE"){
+					if (calc.isSwap()) {
+						textField.setText(text = "");
+						calc.setFirst(0);
+					} else {
+						textField.setText(Integer.toString(calc.getFirst()));
+						calc.setSecond(0);
+					}
 					
 				} else if (entry == "="){
-					System.out.println(calc.calcultaion());
+					textField.setText(Double.toString(calc.calcultaion()));
 				} else {
 					textField.setText(text + entry);
 					
@@ -70,8 +83,8 @@ public class mainClass {
 
 
 		
-		for (int i = 0; i < 16; i++) {
-			String[] operators = {"+","-","*","/", "=", "C"};
+		for (int i = 0; i < 17; i++) {
+			String[] operators = {"+","-","*","/", "CE", "C","="};
 			if (i < 10) {
 				JButton button = new JButton(Integer.toString(i));
 				

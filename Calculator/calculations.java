@@ -5,12 +5,12 @@ public class calculations {
 	int first = 0;
 	int second = 0;
 	String operator = null;
-	boolean swap = true;
+	int swap = 0;
 	
-	public boolean isSwap() {
+	public int isSwap() {
 		return swap;
 	}
-	public void setSwap(boolean swap) {
+	public void setSwap(int swap) {
 		this.swap = swap;
 	}
 	public int getFirst() {
@@ -44,8 +44,10 @@ public class calculations {
 		return x * y;
 	}
 	public static double divider (int x, int y) {
-		
-		return x / y;
+		double z = x;
+		double w = y;
+		double result = z/w;
+		return result;
 	}
 	
 	public double calcultaion () {
@@ -66,7 +68,7 @@ public class calculations {
 		default: 
 			this.setFirst(0);
 			this.setSecond(0);
-			this.setSwap(true);
+			this.setSwap(0);
 		} 
 		return result;
 		
